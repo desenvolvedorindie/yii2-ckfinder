@@ -1,0 +1,32 @@
+{
+    "name": "wfcreations/yii2-ckfinder",
+    "description": "Yii2 CKFinder assets and widget",
+    "keywords": [
+        "yii2",
+        "ckfinder",
+        "widget"
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/wfcreations/yii2-ckfinder/issues",
+        "wiki": "https://github.com/wfcreations/yii2-ckfinder/wiki",
+        "source": "https://github.com/wfcreations/yii2-ckfinder"
+    },
+    "authors": [
+        {
+            "name": "Welsiton Ferreira",
+            "email": "wfcreations@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*"
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "wfcreations\\ckfinder\\": ""
+        }
+    }
+}
