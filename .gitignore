@@ -1,0 +1,12 @@
+.idea
+/nbproject/private/
+/nbproject/
+/vendor/
+
+
+# Ignore everything
+assets/*
+
+# But not these files...
+!assets/.gitignore
+!assets/.put_assets_here
