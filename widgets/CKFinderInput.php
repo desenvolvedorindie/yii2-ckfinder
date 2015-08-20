@@ -40,13 +40,13 @@ class CKFinderInput extends InputWidget {
         if (!isset($this->clientEvents[CKFinderEvents::EVENT_FILES_CHOOSE])) {
             $this->clientEvents[CKFinderEvents::EVENT_FILES_CHOOSE] = new JsExpression("function(evt) {
                 var file = evt.data.files.first();
-                var output = document.getElementById('{$this->id}');
+                var output = document.getElementById('{$this->options['id']}');
                 output.value = file.getUrl();
             }");
         }
         if (!isset($this->clientEvents[CKFinderEvents::EVENT_FILE_CHOOSE_RESIZEDIMAGE])) {
             $this->clientEvents[CKFinderEvents::EVENT_FILE_CHOOSE_RESIZEDIMAGE] = new JsExpression("function(evt) {
-                var output = document.getElementById('{$this->id}');
+                var output = document.getElementById('{$this->options['id']}');
 		output.value = evt.data.scaledUrl;
             }");
         }
@@ -58,7 +58,7 @@ class CKFinderInput extends InputWidget {
             $this->clientOptions['onInit'] = new JsExpression("function(finder){ {$events}}");
         }
         $options = empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
-        $this->getView()->registerJs("$('#{$this->id}-popup').on('click', function(){ CKFinder.$this->type($options); });");
+        $this->getView()->registerJs("$('#{$this->options['id']}-popup').on('click', function(){ CKFinder.$this->type($options); });");
         CKFinderAsset::register($this->getView());
         Html::addCssClass($this->options, 'form-control');
         $input = $this->hasModel() ? Html::activeTextInput($this->model, $this->attribute, $this->options) : Html::textInput($this->name, $this->value, $this->options);
@@ -67,7 +67,7 @@ class CKFinderInput extends InputWidget {
             $input,
             Html::beginTag('span', ['class' => 'input-group-btn']),
             Button::widget([
-                'id' => $this->id . '-popup',
+                'id' => $this->options['id'] . '-popup',
                 'label' => $this->buttonLabel,
                 'options' => $this->buttonOptions,
             ]),
